@@ -1,0 +1,11 @@
+/.vscode
+compiler
+y.tab.c
+y.tab.h
+y.output
+a.out*
+lex.yy.c
+tata*
+toto*
+input.txt
+*.asm
