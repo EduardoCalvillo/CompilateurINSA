@@ -1,0 +1,18 @@
+AFC 0 2
+STORE 128 0
+LOAD 0 128
+STORE 127 0  -- premier AFC
+AFC 0 5
+STORE 129 0
+LOAD 0 129
+STORE 128 0 -- deuieme AFC
+LOAD 0 127      -- C'est quoi ce bloc?
+STORE 129 0     |
+LOAD 0 128      |
+STORE 130 0     --
+LOAD 1 130 -- ? pour quoi @130?
+LOAD 0 129
+ADD 0 0 1
+STORE 129 0
+LOAD 0 129
+STORE 127 0
