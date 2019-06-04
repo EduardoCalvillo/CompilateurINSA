@@ -1,4 +1,5 @@
 int main(){
+	%%h
 	bool a = ✔;
 	float b = 12.5;
 	int t = 10, w=0, fgsf, fj;

@@ -17,9 +17,11 @@ void strDstr(char *chaine, const char *str, char *result)
     strcpy(result, temp);
 }
 
-
 %}
+
+%x comment
 %%
+
 
 "✔" {return tTRUE;}
 "true" {return tTRUE;}
@@ -62,15 +64,23 @@ void strDstr(char *chaine, const char *str, char *result)
 "||" {return tOR;}
 ";" {return tPV;}
 "," {return tV;}
-"{ <!--> }" {return tCOM;}
+
+"/*"         BEGIN(comment);
+
+<comment>[^*\n]*        /* consommer tout ce qui n'est pas un a '*' */
+<comment>"*"+[^*/\n]*   /* consommer les '*'s non suivient par un '/'s */
+<comment>\n
+<comment>"*"+"/"        BEGIN(INITIAL);
+
+
 \'([^\\\"]|\\.)\' {
     char a[10] = "";
     strcpy(a,yytext);
-    strDstr(a, "\'", a);
-    strDstr(a, "\'", a);
+    strDstr(a, "\'", a); //Supprimer les quotes du caractere
+    strDstr(a, "\'", a); //Supprimer les quotes du caractere
     yylval.caractere = a[0]; 
     return tCARACT;
-    }//Supprimer les quotes du caractere
+    }
 \"([^\\\"]|\\.)*\" {
     char a[100] = "";
     strcpy(a,yytext);

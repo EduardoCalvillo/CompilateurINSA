@@ -10,6 +10,7 @@ int current_profondeur = 0;
 
 int current_instruction = 0;
 int lastId = 0;
+int nbrNopes = 0;
 
 
 FILE *asmFile = NULL;
@@ -23,7 +24,7 @@ void init(void)
         fclose(asmFile);
         exit(EXIT_FAILURE);
     }
-    hexAsmFile = fopen("asmFileTest.asm", "w+");
+    hexAsmFile = fopen("hexAsmFile.asm", "w+");
     if (hexAsmFile == NULL)
     {
         perror("Error in init with hexAsmFile");
@@ -143,6 +144,7 @@ void tins_add1(char *instruction, int rA)
         fprintf(stderr, "😱😱😱 Instruction table overflow");
         exit(EXIT_FAILURE);
     }
+    nbrNopes--;
     //AJOUTER DES TESTS
     instTable[current_instruction].inst = instruction;
     instTable[current_instruction].rA = rA;
@@ -158,6 +160,11 @@ void tins_add2(char *instruction, int rA, int rB)
         fprintf(stderr, "😱😱😱 Instruction table overflow");
         exit(EXIT_FAILURE);
     }
+
+    if (strcmp(instruction, "AFC") == 0)
+        nbrNopes = 4;
+    else 
+        nbrNopes--;
     //AJOUTER DES TESTS
     instTable[current_instruction].inst = instruction;
     instTable[current_instruction].rA = rA;
@@ -173,7 +180,12 @@ void tins_add3(char *instruction, int rA, int rB, int rC)
         fprintf(stderr, "😱😱😱 Instruction table overflow");
         exit(EXIT_FAILURE);
     }
-    //AJOUTER DES TESTS
+    if (strcmp(instruction, DIFF) != 0)
+        generateNops();
+    else
+        nbrNopes--;
+    
+        //AJOUTER DES TESTS
     instTable[current_instruction].inst = instruction;
     instTable[current_instruction].rA = rA;
     instTable[current_instruction].rB = rB;
@@ -248,16 +260,25 @@ void printASM(void)
         }
 
         if(i < current_instruction-1)
-        { 
+        {
             fprintf(asmFile, "%s\n", str);
             fprintf(hexAsmFile, "%s\n", hexstr);
         }
         else
         {
+
             fprintf(asmFile, "%s", str);
             fprintf(hexAsmFile, "%s", hexstr);
         }
     }    
+}
+
+void generateNops(){
+    for (int i = 0; i < nbrNopes; i++)
+    {
+        tins_add1(NOP, 0);
+    }
+    nbrNopes = 0;
 }
 
 char *toHexa(char *op){

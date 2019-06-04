@@ -87,13 +87,15 @@ def jmp():
 	global addr
 	addr = lines[addr][1]
 
-
+def nop():
+	global addr
+	addr+=1
 
 
 op = {	'ADD' : add, 'AFC' : afc, 'STORE' : store, 'LOAD' : load, 
 		'MUL' : mul, 'DIV' : div, 'SOU' : sou,
 		'SUPEGAL' : supegal,'SUP' : sup, 'INFEGAL' : infegal, 'INF' : inf,
-		'EGAL' : egal, 'DIFF' : diff, "JMPC" : jmpc, "JMP" : jmp}
+		'EGAL' : egal, 'DIFF' : diff, "JMPC" : jmpc, "JMP" : jmp, "NOPE" : nop}
 	
 #print(lines)
 
@@ -113,4 +115,4 @@ for i in range(len(regs)):
 	print("R@%x: %.2f" % (i, regs[i]))
 print()
 for i in range(16):
-	print("M@%d: %.2f" % (400 + i, mem[400 + i]))
+	print("M@%d: %.2f" % (127 + i, mem[127 + i]))

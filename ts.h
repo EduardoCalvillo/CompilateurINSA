@@ -6,12 +6,17 @@
 #define STRING 3
 #define BOOL 5
 
+#define ADD "ADD"
+#define SOU "SOU"
+#define MUL "MUL"
+#define DIV "DIV"
 #define SUP_EGAL "SUPEGAL"
 #define INF_EGAL "INFEGAL"
 #define SUP "SUP"
 #define INF "INF"
 #define EGAL "EGAL"
 #define DIFF "DIFF"
+#define NOP "NOPE"
 
 #define INST_TBL_SIZE 1024
 
@@ -56,4 +61,5 @@ int tins_get_current(void);
 int tins_get_next(void);
 void update_jmp_addr(int addr);
 void update_jmp_addr_to(int addr, int to);
+void generateNops();
 #endif

@@ -1,12 +1,3 @@
-/* Â faire: 
-        - Check Type
-        - And Or
-        - Emojis
-        -
-        - Pointers
-*/
-
-
 %{
     #include "ts.h"
     int yylex(void);
@@ -14,20 +5,21 @@
     int type = -1;
 %}
 
-%token tEMOJI tMAIN tCONST tBOOL tINT tCHARET tCHAR tCARACT tFLOAT tRET tVOID tWHILE tIF tELSE tPRINT tPARO tPARF tACCO tACCF tEXCLAM tPLUS tMOINS tMUL tDIV tEQV tPV tV tG tNUM tSTRING tDECIMAL tID tERROR tSUP_EGAL tINF_EGAL tSUP tINF tEGAL tAND tOR tTRUE tFALSE tDIFF tCOM
+%token tEMOJI tMAIN tCONST tBOOL tINT tCHARET tCHAR tCARACT tFLOAT tRET tVOID tWHILE tIF tELSE tPRINT tPARO tPARF tACCO tACCF tEXCLAM tPLUS tMOINS tMUL tDIV tEQV tPV tV tG tNUM tSTRING tDECIMAL tID tERROR tSUP_EGAL tINF_EGAL tSUP tINF tEGAL tAND tOR tTRUE tFALSE tDIFF
 %right tEQV
 %left tPLUS tMOINS
 %left tMUL tDIV
 %left tPARO 
-%nonassoc tIFEND        
+%nonassoc tIFEND         
 %nonassoc tELSE
 
 %union{
     int entier;
     char* id;
     float fl;
-    char* string; 
+    char* string;  
     char caractere; 
+      
 }
 
 %type <entier> tNUM;
@@ -180,7 +172,7 @@ Valeurs:    tID {
 Boolean:    tTRUE  { 
                 printf(">bool> ✔\n");
                 $$ = 1;
-                }
+                } 
         |   tFALSE {
                 printf(">bool> ✖\n");
                 $$ = 0;

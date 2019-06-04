@@ -7,4 +7,4 @@ y.tab.c: compiler.y
 test: compiler
 	./compiler < test.c
 simple: compiler
-	./compiler < simple.c
+	./compiler < simple.c 

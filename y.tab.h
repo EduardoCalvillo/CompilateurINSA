@@ -88,8 +88,7 @@ extern int yydebug;
     tTRUE = 298,
     tFALSE = 299,
     tDIFF = 300,
-    tCOM = 301,
-    tIFEND = 302
+    tIFEND = 301
   };
 #endif
 /* Tokens.  */
@@ -136,23 +135,23 @@ extern int yydebug;
 #define tTRUE 298
 #define tFALSE 299
 #define tDIFF 300
-#define tCOM 301
-#define tIFEND 302
+#define tIFEND 301
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 25 "compiler.y" /* yacc.c:1909  */
+#line 16 "compiler.y" /* yacc.c:1909  */
 
     int entier;
     char* id;
     float fl;
-    char* string; 
+    char* string;  
     char caractere; 
+      
 
-#line 156 "y.tab.h" /* yacc.c:1909  */
+#line 155 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

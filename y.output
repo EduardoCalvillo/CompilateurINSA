@@ -5,7 +5,6 @@ Terminaux inutilisés dans la grammaire
    tEXCLAM
    tG
    tERROR
-   tCOM
    tIFEND
 
 
@@ -179,86 +178,85 @@ tOR (297) 73
 tTRUE (298) 51
 tFALSE (299) 52
 tDIFF (300) 71
-tCOM (301)
-tIFEND (302)
+tIFEND (301)
 
 
 Non-terminaux, suivis des règles où ils apparaissent
 
-$accept (48)
+$accept (47)
     à gauche: 0
-start (49)
+start (48)
     à gauche: 1, à droite: 0
-Fonctions (50)
+Fonctions (49)
     à gauche: 2 3, à droite: 1 2
-Fonction (51)
+Fonction (50)
     à gauche: 4 6, à droite: 2
-$@1 (52)
+$@1 (51)
     à gauche: 5, à droite: 6
-Type_void (53)
+Type_void (52)
     à gauche: 7 8, à droite: 4 6
-Args_void (54)
+Args_void (53)
     à gauche: 9 10, à droite: 4
-Type (55)
+Type (54)
     à gauche: 11 12 13 14 15, à droite: 7 18 35 38
-Args (56)
+Args (55)
     à gauche: 16 17, à droite: 9
-Arg (57)
+Arg (56)
     à gauche: 18, à droite: 16 19
-Tv_args (58)
+Tv_args (57)
     à gauche: 19 20, à droite: 16 19
-Body (59)
+Body (58)
     à gauche: 22, à droite: 4 6 54 56 60
-$@2 (60)
+$@2 (59)
     à gauche: 21, à droite: 22
-Lignes (61)
+Lignes (60)
     à gauche: 23 24, à droite: 22 23
-Ligne (62)
+Ligne (61)
     à gauche: 25 33 54 60 74 75, à droite: 23
-Affectation (63)
+Affectation (62)
     à gauche: 26, à droite: 25
-Expr (64)
+Expr (63)
     à gauche: 27 28 29 30 31 32, à droite: 26 27 28 29 30 31 38 43
     62 63
-Declaration (65)
+Declaration (64)
     à gauche: 35 38, à droite: 33
-$@3 (66)
+$@3 (65)
     à gauche: 34, à droite: 35
-$@4 (67)
+$@4 (66)
     à gauche: 36, à droite: 38
-$@5 (68)
+$@5 (67)
     à gauche: 37, à droite: 38
-Decl_sans_type (69)
+Decl_sans_type (68)
     à gauche: 40 43 44, à droite: 35 38 40 43
-$@6 (70)
+$@6 (69)
     à gauche: 39, à droite: 40
-$@7 (71)
+$@7 (70)
     à gauche: 41, à droite: 43
-$@8 (72)
+$@8 (71)
     à gauche: 42, à droite: 43
-Valeurs (73)
+Valeurs (72)
     à gauche: 45 46 47 48 49 50, à droite: 32 74 75
-Boolean (74)
+Boolean (73)
     à gauche: 51 52, à droite: 50
-$@9 (75)
+$@9 (74)
     à gauche: 53, à droite: 54
-Else (76)
+Else (75)
     à gauche: 56 57, à droite: 54
-$@10 (77)
+$@10 (76)
     à gauche: 55, à droite: 56
-$@11 (78)
+$@11 (77)
     à gauche: 58, à droite: 60
-$@12 (79)
+$@12 (78)
     à gauche: 59, à droite: 60
-Tests (80)
+Tests (79)
     à gauche: 61, à droite: 54 60
-Test (81)
+Test (80)
     à gauche: 62 63, à droite: 61 64
-And_or_Test (82)
+And_or_Test (81)
     à gauche: 64 65, à droite: 61 64
-Cond (83)
+Cond (82)
     à gauche: 66 67 68 69 70 71, à droite: 62
-And_Or (84)
+And_Or (83)
     à gauche: 72 73, à droite: 64
 
 
