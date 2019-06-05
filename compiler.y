@@ -56,7 +56,7 @@ Body: tACCO {ts_inc_profondeur();} Lignes tACCF {ts_dec_profondeur();};
 Lignes: Ligne Lignes | ; 
 
 Ligne: Affectation tPV;
-Affectation: tID  tEQV  Expr {    
+Affectation: tID  tEQV  Expr {
         tins_add2("LOAD", 0, ts_get_adr(ts_get_last_index()));    
         int index = ts_get_index($1);
         if(index == -1)

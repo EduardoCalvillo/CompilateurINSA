@@ -16,7 +16,6 @@
 #define INF "INF"
 #define EGAL "EGAL"
 #define DIFF "DIFF"
-#define NOP "NOPE"
 
 #define INST_TBL_SIZE 1024
 

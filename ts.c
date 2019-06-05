@@ -10,7 +10,6 @@ int current_profondeur = 0;
 
 int current_instruction = 0;
 int lastId = 0;
-int nbrNopes = 0;
 
 
 FILE *asmFile = NULL;
@@ -144,7 +143,6 @@ void tins_add1(char *instruction, int rA)
         fprintf(stderr, "😱😱😱 Instruction table overflow");
         exit(EXIT_FAILURE);
     }
-    nbrNopes--;
     //AJOUTER DES TESTS
     instTable[current_instruction].inst = instruction;
     instTable[current_instruction].rA = rA;
@@ -161,10 +159,6 @@ void tins_add2(char *instruction, int rA, int rB)
         exit(EXIT_FAILURE);
     }
 
-    if (strcmp(instruction, "AFC") == 0)
-        nbrNopes = 4;
-    else 
-        nbrNopes--;
     //AJOUTER DES TESTS
     instTable[current_instruction].inst = instruction;
     instTable[current_instruction].rA = rA;
@@ -180,12 +174,9 @@ void tins_add3(char *instruction, int rA, int rB, int rC)
         fprintf(stderr, "😱😱😱 Instruction table overflow");
         exit(EXIT_FAILURE);
     }
-    if (strcmp(instruction, DIFF) != 0)
-        generateNops();
-    else
-        nbrNopes--;
-    
-        //AJOUTER DES TESTS
+
+
+    //AJOUTER DES TESTS
     instTable[current_instruction].inst = instruction;
     instTable[current_instruction].rA = rA;
     instTable[current_instruction].rB = rB;
@@ -273,13 +264,6 @@ void printASM(void)
     }    
 }
 
-void generateNops(){
-    for (int i = 0; i < nbrNopes; i++)
-    {
-        tins_add1(NOP, 0);
-    }
-    nbrNopes = 0;
-}
 
 char *toHexa(char *op){
     char *inst = "0";

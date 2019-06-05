@@ -7,6 +7,8 @@ int main()
 
 
     8 */
-    int i = 1 + 2;
-    i = 4;  
+    int i = 2;
+    int o = 5;
+    int a = 3;
+    i = (i+o) - a;  
 }
