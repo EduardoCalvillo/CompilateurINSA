@@ -37,7 +37,7 @@ void ts_add(char *name, int type)
     // AJOUTER LES TESTS.
     if (ts_index > 0 && ts_get_index(name) != -1 && current_profondeur == ts_get_profondeur(name))
     {
-        fprintf(stderr, "😱😱😱 Vous ne pouvez pas déclarer deux fois la même vairable dans le contexte");
+        fprintf(stderr, "😱😱😱 Vous ne pouvez pas déclarer deux fois la même vairable dans le contexte\n");
         exit(EXIT_FAILURE);
     }
     strcpy(symbols[ts_index].name, name);
@@ -70,7 +70,6 @@ int ts_get_index(char *name)
     int i = ts_index - 1;
     while (i >= 0)
     {
-        // printf("symbole[%d].name = [%s],   name = [%s]", i, symbols[i].name, name);
         if (strcmp(symbols[i].name, name) == 0)
             return i;
         i--;
@@ -83,7 +82,6 @@ int ts_get_profondeur(char *name)
     int i = 0;
     while (i < ts_index)
     {
-        // printf("symbole[%d].name = [%s],   name = [%s]", i, symbols[i].name, name);
         if (strcmp(symbols[i].name, name) == 0)
             return symbols[i].profondeur;
         i++;

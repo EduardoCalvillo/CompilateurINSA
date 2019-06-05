@@ -17,9 +17,12 @@ void strDstr(char *chaine, const char *str, char *result)
     strcpy(result, temp);
 }
 
+int comment_lines = 0;
 %}
 
+
 %x comment
+%x short_comment
 %%
 
 
@@ -27,7 +30,8 @@ void strDstr(char *chaine, const char *str, char *result)
 "true" {return tTRUE;}
 "false" {return tFALSE;}
 "✖" {return tFALSE;}
-"main" {return tMAIN;}
+"main" {return tMAIN; 
+    yylval.commentSize = 0;}
 "const" {return tCONST;}
 "bool" {return tBOOL;}
 "int" {return tINT;}
@@ -65,13 +69,17 @@ void strDstr(char *chaine, const char *str, char *result)
 ";" {return tPV;}
 "," {return tV;}
 
-"/*"         BEGIN(comment);
+"/*"         BEGIN(comment);{comment_lines = 0;}
 
 <comment>[^*\n]*        /* consommer tout ce qui n'est pas un a '*' */
 <comment>"*"+[^*/\n]*   /* consommer les '*'s non suivient par un '/'s */
-<comment>\n
-<comment>"*"+"/"        BEGIN(INITIAL);
+<comment>\n {comment_lines++; printf("++\n");}
+<comment>"*"+"/"        BEGIN(INITIAL); {yylval.commentSize = comment_lines + 1; comment_lines = 0; return tCOM;}
 
+"//"         BEGIN(short_comment); {yylval.commentSize = 1; comment_lines = 0; return tCOM;}
+
+<short_comment>[[:alnum:]]*       /* consommer tout ce qui n'est pas un a '*' */
+<short_comment>\n         BEGIN(INITIAL);
 
 \'([^\\\"]|\\.)\' {
     char a[10] = "";
